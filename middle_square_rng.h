@@ -33,11 +33,13 @@ unsigned char ms_rng(unsigned char seed)
 
 void middle_square_to_ppm(const int dim_x, const int dim_y)
 {
-    unsigned char entry_seed = rand()%255;
+    printf("[Creating the file (middle_square_to_ppm)]\r\n");
+    unsigned char entry_seed = (unsigned char) (rand() % 255);
     FILE * fp = fopen("middle_square.ppm", "wb");
     if (fp == NULL)
         printf(ANSI_COLOR_RED "[An error occured - cannot create the file (rand_to_ppm)]" ANSI_COLOR_RESET);
     fprintf(fp, "P6\n%d %d\n255\n", dim_x, dim_y);
+    printf("[Generating the image (middle_square_to_ppm)]\r\n");
     unsigned char color[3];
 
     for (int i=0; i < dim_x; i++)
@@ -48,13 +50,14 @@ void middle_square_to_ppm(const int dim_x, const int dim_y)
                 color[0] = ms_rng(color[2]); /* red */
             else
                 color[0] = ms_rng_(entry_seed);
-            printf("R: %i ", color[0]);
+            //printf("R: %i ", color[0]);
             color[1] = ms_rng(color[0]);
-            printf("G: %i ", color[1]);
+            //printf("G: %i ", color[1]);
             color[2] = ms_rng(color[1]);
-            printf("B: %i\r\n", color[2]);
+            //printf("B: %i\r\n", color[2]);
             fwrite(color,1,3,fp);
         }
     }
+    printf("[Closing the buffer (middle_square_to_ppm)]\r\n");
     fclose(fp);
 }
