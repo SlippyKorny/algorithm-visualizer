@@ -44,6 +44,8 @@ int main(int argc, const char **argv)
 //            middle_square_to_ppm(255, 255);
 //        else if(!strcmp(argv[1], "linear_congruential"))
 //            lin_con_to_ppm(255, 255);
+//        else if(!strcmp(argv[1], "perlin_noise"))
+//             perlin_noise_to_ppm(255, 255);
 //        else
 //            lin_con_to_ppm(255, 255);
 //    }
